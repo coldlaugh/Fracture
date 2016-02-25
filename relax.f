@@ -42,7 +42,7 @@ C======================================================================
       do ir = 0,N-1
           call random_number(u)
           i = int(u*N)
-          v(i) = v(i)+dt*md_velocity(ir)-0.5*dE(i)*dt*dt/mass
+          v(i) = v(i)+dt*md_velocity(i)-0.5*dE(i)*dt*dt/mass
           md_velocity(i) = md_velocity(i)-0.5*dE(i)*dt/mass
           v(i+N)=v(i+N)+dt*md_velocity(i+N)-0.5*dE(i+N)*dt*dt/mass
           md_velocity(i+N)=md_velocity(i+N)-0.5*dE(i+N)*dt/mass
