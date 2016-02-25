@@ -38,17 +38,25 @@ C======================================================================
       dE(:) =0.d0
       call moveBoundary(v,L,strain,N)
   20  CONTINUE
+      v = v+dt*md_velocity-0.5*dE*dt*dt/mass
+      md_velocity = md_velocity-0.5*dE*dt/mass
+
       do ir = 0,N-1
 C          call random_number(u)
           i = ir
-          v(i) = v(i)+dt*md_velocity(ir)-0.5*dE(i)*dt*dt/mass
-          md_velocity(i) = md_velocity(i)-0.5*dE(i)*dt/mass
-          v(i+N)=v(i+N)+dt*md_velocity(i+N)-0.5*dE(i+N)*dt*dt/mass
-          md_velocity(i+N)=md_velocity(i+N)-0.5*dE(i+N)*dt/mass
+C          v(i) = v(i)+dt*md_velocity(ir)-0.5*dE(i)*dt*dt/mass
+C          md_velocity(i) = md_velocity(i)-0.5*dE(i)*dt/mass
+C          v(i+N)=v(i+N)+dt*md_velocity(i+N)-0.5*dE(i+N)*dt*dt/mass
+C          md_velocity(i+N)=md_velocity(i+N)-0.5*dE(i+N)*dt/mass
           call singleDEnergy(v,k,L,N,i,dE(i),dE(i+N))
-          md_velocity(i)=md_velocity(i)-0.5*dE(i)*dt/mass
-          md_velocity(i+N) = md_velocity(i+N)-0.5*dE(i+N)*dt/mass
+C          md_velocity(i)=md_velocity(i)-0.5*dE(i)*dt/mass
+C          md_velocity(i+N) = md_velocity(i+N)-0.5*dE(i+N)*dt/mass
       enddo
+      md_velocity=md_velocity-0.5*dE*dt/mass
+      md_velocity= md_velocity-0.5*dE*dt/mass
+
+
+      print *,'max dE:',maxval(dabs(dE(:)))
       if(maxval(dabs(dE(:))) .le. eps) go to 50
       vf = - DOT_PRODUCT(dE , md_velocity)
       vv = DOT_PRODUCT(md_velocity , md_velocity)
