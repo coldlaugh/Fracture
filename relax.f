@@ -56,7 +56,7 @@ C          md_velocity(i+N) = md_velocity(i+N)-0.5*dE(i+N)*dt/mass
       md_velocity= md_velocity-0.5*dE*dt/mass
 
 
-      print *,'max dE:',maxval(dabs(dE(:)))
+C      print *,'max dE:',maxval(dabs(dE(:)))
       if(maxval(dabs(dE(:))) .le. eps) go to 50
       vf = - DOT_PRODUCT(dE , md_velocity)
       vv = DOT_PRODUCT(md_velocity , md_velocity)
