@@ -39,7 +39,7 @@ C======================================================================
       call moveBoundary(v,L,strain,N)
       print *,'A'
   20  CONTINUE
-      do ir = 1,N
+      do ir = 0,N-1
 C          call random_number(u)
           i = ir
           v(i) = v(i)+dt*md_velocity(ir)-0.5*dE(i)*dt*dt/mass
