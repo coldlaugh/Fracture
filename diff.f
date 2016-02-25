@@ -487,11 +487,7 @@ C              dyp= dyp - c1*dnint(dyp/c1)
         i = mod(ns,L)
         j = int(ns/L)
 
-        if ( j .eq. 0) then
-            dEx = 0.d0
-            dEy = 0.d0
-            return
-        endif
+
 
 
         m=i+j*L
@@ -581,10 +577,12 @@ C              dyp= dyp - c1*dnint(dyp/c1)
               dEy=dEy-dyp*dEE
            endif
 
-
+        if ( j .eq. 0) then
+               dEx = 0.d0
+               dEy = 0.d0
+        endif
         if (j .eq. (L-1)) then
             dEy = 0.d0
-            return
         endif
       end subroutine singleDEnergy
 
