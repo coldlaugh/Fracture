@@ -37,7 +37,7 @@ C======================================================================
       eps_small = 1.d-10;
       dE(:) =0.d0
       call moveBoundary(v,L,strain,N)
-
+      print 'A'
   20  CONTINUE
       do ir = 1,N
 C          call random_number(u)
@@ -79,7 +79,7 @@ C          call random_number(u)
       endif
       go to 20
   50  CONTINUE
-
+      print 'B'
       call DEnergy(v,k,kappa,L,strain,dE,N,sts)
 
 

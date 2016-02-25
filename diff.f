@@ -586,7 +586,6 @@ C              dyp= dyp - c1*dnint(dyp/c1)
             dEy = 0.d0
             return
         endif
-
       end subroutine singleDEnergy
 
       subroutine moveBoundary(v,L,strain,N)
