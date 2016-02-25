@@ -473,10 +473,10 @@ C              dyp= dyp - c1*dnint(dyp/c1)
         integer, intent(in) ::L
         real(8), intent(in), dimension(0:N-1,0:2) ::k
         real(8), intent(inout) :: dEx,dEy
-        integer :: nsx,nsy
+        integer :: ns
         integer :: i,j,i1,j1,im1,jm1,m,m0,m1,m2,m3,m4,m5,ll
-        real(8) :: dxp,dyp,dEE,c0,c,c1,eps,den,dxm,dym
-        real(8)::  dpp,theta,dott,lp,lm,dEbx1,dEby1,dEbx2,dEby2
+        real(8) :: dxp,dyp,dEE,c0,c,c1,eps,dxm,dym
+        real(8)::  dpp,theta,dott,lp,lm
 
         real(8), dimension(0:N-1) :: ux,uy
 
@@ -484,8 +484,8 @@ C              dyp= dyp - c1*dnint(dyp/c1)
         eps = 0.01
         ll=L*(L-1)
 
-        i = mod(nsx,L)
-        j = int(nsx/L)
+        i = mod(ns,L)
+        j = int(ns/L)
 
         if ( j .eq. 0) then
             dEx = 0.d0

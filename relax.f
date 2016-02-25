@@ -38,17 +38,17 @@ C======================================================================
       dE(:) =0.d0
 
   20  CONTINUE
-      moveBoundary(v,L,strain,N)
+      call moveBoundary(v,L,strain,N)
       do ir = 1,N
           call random_number(u)
           i = int(N * u)
-          v(i) = v(i) + dt * md_velocity(ir) - 0.5 * dE(i) * dt * dt / mass
-          md_velocity(i) = md_velocity(i) - 0.5 * dE(i) * dt / mass
+          v(i) = v(i)+dt*md_velocity(ir)-0.5*dE(i)*dt*dt/mass
+          md_velocity(i) = md_velocity(i)-0.5*dE(i)*dt/mass
           v(i+N)=v(i+N)+dt*md_velocity(i+N)-0.5*dE(i+N)*dt*dt/mass
-          md_velocity(i+N) = md_velocity(i+N) - 0.5 * dE(i+N) * dt / mass
+          md_velocity(i+N)=md_velocity(i+N)-0.5*dE(i+N)*dt/mass
           call singleDEnergy(v,k,L,N,i,dE(i),dE(i+N))
           md_velocity(i)=md_velocity(i)-0.5*dE(i)*dt/mass
-          md_velocity(i+N) = md_velocity(i+N) - 0.5*dE(i+N)*dt/mass
+          md_velocity(i+N) = md_velocity(i+N)-0.5*dE(i+N)*dt/mass
       enddo
       if(maxval(dabs(dE(:))) .le. eps) go to 50
       vf = - DOT_PRODUCT(dE , md_velocity)
