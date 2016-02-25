@@ -580,8 +580,7 @@ C              dyp= dyp - c1*dnint(dyp/c1)
               dEx=dEx-dxp*dEE
               dEy=dEy-dyp*dEE
            endif
-        enddo
-        enddo
+
 
         if (j .eq. (L-1)) then
             dEy = 0.d0
@@ -597,7 +596,7 @@ C              dyp= dyp - c1*dnint(dyp/c1)
           integer ::N
           integer ::i,j,m
           double precision::c
-          c=0.5d0*sqrt(3)*(1.+strain)*(L-1)
+          c=0.5d0*sqrt(3.)*(1.+strain)*(L-1)
           do i=0,L-1
           do j=0,1
              m=i+j*L*(L-1)
