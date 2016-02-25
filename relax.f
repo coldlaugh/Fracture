@@ -37,7 +37,6 @@ C======================================================================
       eps_small = 1.d-10;
       dE(:) =0.d0
       call moveBoundary(v,L,strain,N)
-      print *,'A'
   20  CONTINUE
       do ir = 0,N-1
 C          call random_number(u)
@@ -47,7 +46,6 @@ C          call random_number(u)
           v(i+N)=v(i+N)+dt*md_velocity(i+N)-0.5*dE(i+N)*dt*dt/mass
           md_velocity(i+N)=md_velocity(i+N)-0.5*dE(i+N)*dt/mass
           call singleDEnergy(v,k,L,N,i,dE(i),dE(i+N))
-          print *,i,dE(i)
           md_velocity(i)=md_velocity(i)-0.5*dE(i)*dt/mass
           md_velocity(i+N) = md_velocity(i+N)-0.5*dE(i+N)*dt/mass
       enddo
@@ -80,7 +78,6 @@ C          call random_number(u)
       endif
       go to 20
   50  CONTINUE
-      print *,'B'
       call DEnergy(v,k,kappa,L,strain,dE,N,sts)
 
 
