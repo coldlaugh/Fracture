@@ -36,12 +36,12 @@ C======================================================================
       xtol = 1.d-15;
       eps_small = 1.d-10;
       dE(:) =0.d0
+      call moveBoundary(v,L,strain,N)
 
   20  CONTINUE
-      call moveBoundary(v,L,strain,N)
       do ir = 1,N
-          call random_number(u)
-          i = int(N * u)
+C          call random_number(u)
+          i = ir
           v(i) = v(i)+dt*md_velocity(ir)-0.5*dE(i)*dt*dt/mass
           md_velocity(i) = md_velocity(i)-0.5*dE(i)*dt/mass
           v(i+N)=v(i+N)+dt*md_velocity(i+N)-0.5*dE(i+N)*dt*dt/mass
