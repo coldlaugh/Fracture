@@ -47,6 +47,7 @@ C          call random_number(u)
           v(i+N)=v(i+N)+dt*md_velocity(i+N)-0.5*dE(i+N)*dt*dt/mass
           md_velocity(i+N)=md_velocity(i+N)-0.5*dE(i+N)*dt/mass
           call singleDEnergy(v,k,L,N,i,dE(i),dE(i+N))
+          print *,i,dE(i)
           md_velocity(i)=md_velocity(i)-0.5*dE(i)*dt/mass
           md_velocity(i+N) = md_velocity(i+N)-0.5*dE(i+N)*dt/mass
       enddo
