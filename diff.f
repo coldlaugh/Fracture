@@ -551,7 +551,7 @@ C              dyp= dyp - c1*dnint(dyp/c1)
            lp=1.
            if (k(m3,0).gt.eps) then
               dxp=v(m3)-v(m)
-              dyp=v(m3)-v(m+N)
+              dyp=v(m3+N)-v(m+N)
               dxp=dxp - L * dnint(dxp/L)
               lp=sqrt(dxp*dxp+dyp*dyp)
               dEE=k(m3,0)*(lp-1.)/lp
