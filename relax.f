@@ -18,7 +18,7 @@ C======================================================================
       real(8)::strain,kappa,E,sts(0:1,0:1)
       real(8)::eps,xtol,f_c,eps_small
       integer::iprint(2),iflag,icall,i,j,imax,jmax,fmax
-      integr::ir
+      integer::ir
 
       real(8)::dt,vv,ff,vf,f,acoef,mass
       real(8),dimension(:),allocatable::md_velocity
