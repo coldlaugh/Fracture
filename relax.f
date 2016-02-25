@@ -55,13 +55,6 @@ C          md_velocity(i+N) = md_velocity(i+N)-0.5*dE(i+N)*dt/mass
       md_velocity=md_velocity-0.5*dE*dt/mass
       md_velocity= md_velocity-0.5*dE*dt/mass
 
-      print *,dE(L*3+4)
-
-      call DEnergy(v,k,kappa,L,strain,dE,N,sts)
-
-      print *,'true:',dE(L*3+4)
-
-
 
 C      print *,'max dE:',maxval(dabs(dE(:)))
       if(maxval(dabs(dE(:))) .le. eps) go to 50
