@@ -35,7 +35,6 @@ C======================================================================
       mass = 0.1
       xtol = 1.d-15;
       eps_small = 1.d-10;
-      NN = 2*N
       dE(:) =0.d0
 
   20  CONTINUE
@@ -47,7 +46,7 @@ C======================================================================
           md_velocity(i) = md_velocity(i) - 0.5 * dE(i) * dt / mass
           v(i+N)=v(i+N)+dt*md_velocity(i+N)-0.5*dE(i+N)*dt*dt/mass
           md_velocity(i+N) = md_velocity(i+N) - 0.5 * dE(i+N) * dt / mass
-          call singleDEnergy(v,k,L,N,nsx,nsy,dE(i),dE(i+N))
+          call singleDEnergy(v,k,L,N,i,dE(i),dE(i+N))
           md_velocity(i)=md_velocity(i)-0.5*dE(i)*dt/mass
           md_velocity(i+N) = md_velocity(i+N) - 0.5*dE(i+N)*dt/mass
       enddo

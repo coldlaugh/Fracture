@@ -466,7 +466,7 @@ C              dyp= dyp - c1*dnint(dyp/c1)
 
       end subroutine bonds
 
-      subroutine singleDEnergy(v,k,L,N,nsx,nsy,dEx,dEy)
+      subroutine singleDEnergy(v,k,L,N,ns,dEx,dEy)
         implicit none
         integer, intent(in)::N
         real(8), intent(inout), dimension(0:2*N-1) :: v
